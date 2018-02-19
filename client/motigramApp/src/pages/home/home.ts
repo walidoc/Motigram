@@ -3,6 +3,9 @@ import { IonicPage, NavController, ModalController, ActionSheetController } from
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { ImagesProvider } from "../../providers/images/images";
+import { AuthProvider } from "../../providers/auth/auth";
+import { LoginPage } from '../login/login';
+import { ProfilePage } from "../profile/profile";
 
 @Component({
   selector: 'page-home',
@@ -11,7 +14,7 @@ import { ImagesProvider } from "../../providers/images/images";
 export class HomePage {
     images: any = [];
  
-    constructor(public navCtrl: NavController, private imagesProvider: ImagesProvider, private camera: Camera, private actionSheetCtrl: ActionSheetController, private modalCtrl: ModalController) {
+    constructor(public navCtrl: NavController, private authProvider: AuthProvider, private imagesProvider: ImagesProvider, private camera: Camera, private actionSheetCtrl: ActionSheetController, private modalCtrl: ModalController) {
       this.reloadImages();
     }
    
@@ -79,5 +82,14 @@ export class HomePage {
       }, (err) => {
         console.log('Error: ', err);
       });
+    }
+
+    logoutClicked() {
+        this.authProvider.logout();
+        this.navCtrl.setRoot(LoginPage)
+    }
+
+    goToProfile(user) {
+        this.navCtrl.push(ProfilePage, {user})
     }
   }

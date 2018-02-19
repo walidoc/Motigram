@@ -11,7 +11,7 @@ import { SignupPage } from '../signup/signup';
 })
 export class LoginPage {
  
-    email: string;
+    username: string;
     password: string;
     loading: any;
  
@@ -40,7 +40,7 @@ export class LoginPage {
         this.showLoader();
  
         let credentials = {
-            email: this.email,
+            username: this.username,
             password: this.password
         };
  

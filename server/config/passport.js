@@ -6,13 +6,13 @@ var ExtractJwt = require('passport-jwt').ExtractJwt;
 var LocalStrategy = require('passport-local').Strategy;
  
 var localOptions = {
-    usernameField: 'email'
+    usernameField: 'username'
 };
  
-var localLogin = new LocalStrategy(localOptions, function(email, password, done){
+var localLogin = new LocalStrategy(localOptions, function(username, password, done){
  
     User.findOne({
-        email: email
+        username: username
     }, function(err, user){
         console.log('oops hmm: ', err);
         

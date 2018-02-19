@@ -12,6 +12,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
+import { ProfilePage } from "../pages/profile/profile";
+
 import { AuthProvider } from '../providers/auth/auth';
 import { ImagesProvider } from '../providers/images/images';
 
@@ -20,7 +22,8 @@ import { ImagesProvider } from '../providers/images/images';
     MyApp,
     HomePage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { ImagesProvider } from '../providers/images/images';
     MyApp,
     HomePage,
     LoginPage,
-    SignupPage
+    SignupPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

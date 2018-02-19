@@ -16,12 +16,12 @@ export class ImagesProvider {
         return this.http.delete(this.apiURL + img._id);
     }
      
-    uploadImage(img, desc) {
+    uploadImage(img, desc, owner) {
         var options: FileUploadOptions = {
             fileKey: 'image',
             chunkedMode: false,
             mimeType: 'multipart/form-data',
-            params: { 'desc': desc }
+            params: { desc, owner }
         };
         
         const fileTransfer: FileTransferObject = this.transfer.create();  

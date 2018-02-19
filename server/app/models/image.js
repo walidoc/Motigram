@@ -16,8 +16,7 @@ var ImageSchema = new mongoose.Schema({
         default: Date.now
     },
     createdBy: {
-        type: String,
-        default: 'walidoc'
+        type: String
     }
 
 });

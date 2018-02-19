@@ -9,7 +9,7 @@ import { HomePage } from '../home/home';
 })
 export class SignupPage {
  
-  email: string;
+  username: string;
   password: string;
   loading: any;
 
@@ -22,7 +22,7 @@ export class SignupPage {
     this.showLoader();
  
     let details = {
-        email: this.email,
+        username: this.username,
         password: this.password
     };
  

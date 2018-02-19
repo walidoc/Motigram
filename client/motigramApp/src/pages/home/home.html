@@ -1,34 +1,61 @@
 <ion-header>
-    <ion-navbar color="primary">
-      <ion-title>Images</ion-title>
-    </ion-navbar>
-  </ion-header>
-   
-  <ion-content>
-    <h3 [hidden]="images.length !== 0" text-center>No Images found!</h3>
-   
-    <ion-list>
-      <ion-item-sliding *ngFor="let img of images">
-   
-        <ion-item tappable (click)="openImage(img)">
-          <ion-thumbnail item-start>
-            <img [src]="img.url">
-          </ion-thumbnail>
-          <h2>{{ img.desc }}</h2>
-          <button ion-button clear icon-only item-end> <ion-icon name="arrow-forward"></ion-icon></button>
-        </ion-item>
-   
-        <ion-item-options side="right">
-          <button ion-button icon-only color="danger" (click)="deleteImage(img)">
-          <ion-icon name="trash"></ion-icon>
+  <ion-navbar color="primary">
+    <ion-title>Motigram</ion-title>
+    <ion-buttons end> 
+        <button ion-button (click)="goToProfile(authProvider.username)"> 
+            {{ authProvider.username }}
+        </button> 
+        <button ion-button (click)="logoutClicked()"> 
+            <ion-icon ios="ios-exit" md="md-exit"></ion-icon>
         </button>
-        </ion-item-options>
-   
-      </ion-item-sliding>
-    </ion-list>
-   
-    <ion-fab right bottom>
-      <button ion-fab (click)="presentActionSheet()"><ion-icon name="camera"></ion-icon></button>
-    </ion-fab>
-   
-  </ion-content>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <h4 [hidden]="images.length !== 0" text-center>Sorry, no posts yet in your feed. Be first to add!</h4>
+
+  <ion-card *ngFor="let img of images">
+    <ion-item>
+      <ion-avatar item-start tappable (click)="goToProfile(img.createdBy)">
+        <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-256.png">
+      </ion-avatar>
+      <h2 tappable (click)="goToProfile(img.createdBy)">{{ img.createdBy }}</h2>
+      <p>{{ img.createdAt | date: 'short' }}</p>
+    </ion-item>
+
+    <img tappable (click)="openImage(img)" [src]="img.url">
+
+    <ion-card-content>
+      <p>{{ img.desc }}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>12 Likes</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>4 Comments</div>
+        </button>
+      </ion-col>
+      <!-- <ion-col center text-center>
+        <button ion-button icon-only (click)="deleteImage(img)">
+            <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-col> -->
+    </ion-row>
+
+  </ion-card>
+
+  <ion-fab right bottom>
+    <button ion-fab (click)="presentActionSheet()">
+      <ion-icon name="camera"></ion-icon>
+    </button>
+  </ion-fab>
+
+</ion-content>

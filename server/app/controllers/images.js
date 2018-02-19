@@ -7,7 +7,8 @@ exports.createImage = function(req, res, next){
     var newImage = new Image();
     newImage.filename = req.file.filename;
     newImage.originalName = req.file.originalname;
-    newImage.desc = req.body.desc
+    newImage.desc = req.body.desc;
+    newImage.createdBy = req.body.owner;
     newImage.save(err => {
         if (err) {
             return res.sendStatus(400);

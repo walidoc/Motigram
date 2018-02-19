@@ -11,7 +11,7 @@ function generateToken(user){
 function setUserInfo(request){
     return {
         _id: request._id,
-        email: request.email
+        username: request.username
     };
 }
  
@@ -29,29 +29,29 @@ exports.login = function(req, res, next){
 exports.register = function(req, res, next){
     console.log('req: ', req.body);
     
-    var email = req.body.email;
+    var username = req.body.username;
     var password = req.body.password;
  
-    if(!email){
-        return res.status(422).send({error: 'You must enter an email address'});
+    if(!username){
+        return res.status(422).send({error: 'You must enter a username address'});
     }
  
     if(!password){
         return res.status(422).send({error: 'You must enter a password'});
     }
  
-    User.findOne({email: email}, function(err, existingUser){
+    User.findOne({username: username}, function(err, existingUser){
  
         if(err){
             return next(err);
         }
  
         if(existingUser){
-            return res.status(422).send({error: 'That email address is already in use'});
+            return res.status(422).send({error: 'That username address is already in use'});
         }
  
         var user = new User({
-            email: email,
+            username: username,
             password: password
         });
  
