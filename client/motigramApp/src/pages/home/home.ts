@@ -19,13 +19,13 @@ export class HomePage {
     }
    
     reloadImages() {
-      this.imagesProvider.getImages().subscribe(data => {
+      this.imagesProvider.getImages().then(data => {
         this.images = data;
       });
     }
    
     deleteImage(img) {
-      this.imagesProvider.deleteImage(img).subscribe(data => {
+      this.imagesProvider.deleteImage(img).then(data => {
         this.reloadImages();
       });
     }

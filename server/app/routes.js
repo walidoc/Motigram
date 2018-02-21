@@ -37,10 +37,10 @@ module.exports = function(app){
     // Todo Routes
     apiRoutes.use('/images', imageRoutes);
  
-    imageRoutes.get('/', ImageController.getImages);
-    imageRoutes.post('/', upload.single('image'), ImageController.createImage);
+    imageRoutes.get('/', requireAuth, ImageController.getImages);
+    imageRoutes.post('/', upload.single('image'), requireAuth, ImageController.createImage);
     imageRoutes.get('/:image_id', ImageController.getImage);
-    imageRoutes.delete('/:image_id', ImageController.deleteImage);
+    imageRoutes.delete('/:image_id', requireAuth, ImageController.deleteImage);
  
     // Set up routes
     app.use('/api', apiRoutes);
