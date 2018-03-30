@@ -52,24 +52,13 @@ export class ImagesProvider {
         })
     }
      
-    async uploadImage(img, desc, owner) {
-        
-        await this.storage.get('token').then((value) => {
-            this.token = value;
-        })
-
-        const httpOptions = {
-            headers: new HttpHeaders({
-            'Authorization':  this.token
-            })
-        }
+    uploadImage(img, desc, owner) {
 
         var options: FileUploadOptions = {
             fileKey: 'image',
             chunkedMode: false,
             mimeType: 'multipart/form-data',
-            params: { desc, owner },
-            headers: httpOptions
+            params: { desc, owner }
         };
         
         const fileTransfer: FileTransferObject = this.transfer.create();  

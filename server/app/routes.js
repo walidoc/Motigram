@@ -38,7 +38,7 @@ module.exports = function(app){
     apiRoutes.use('/images', imageRoutes);
  
     imageRoutes.get('/', requireAuth, ImageController.getImages);
-    imageRoutes.post('/', upload.single('image'), requireAuth, ImageController.createImage);
+    imageRoutes.post('/', upload.single('image'), ImageController.createImage);
     imageRoutes.get('/:image_id', ImageController.getImage);
     imageRoutes.delete('/:image_id', requireAuth, ImageController.deleteImage);
  
