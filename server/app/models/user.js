@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var bcrypt   = require('bcrypt-nodejs');
+const mongoose = require('mongoose');
+const bcrypt   = require('bcrypt-nodejs');
  
-var UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
  
     username: {
         type: String,
@@ -24,8 +24,8 @@ var UserSchema = new mongoose.Schema({
  
 UserSchema.pre('save', function(next){
  
-    var user = this;
-    var SALT_FACTOR = 5;
+    const user = this;
+    const SALT_FACTOR = 5;
  
     if(!user.isModified('password')){
         return next();

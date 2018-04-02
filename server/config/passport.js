@@ -1,15 +1,15 @@
-var passport = require('passport');
-var User = require('../app/models/user');
-var config = require('./auth');
-var JwtStrategy = require('passport-jwt').Strategy;
-var ExtractJwt = require('passport-jwt').ExtractJwt;
-var LocalStrategy = require('passport-local').Strategy;
+const passport = require('passport');
+const User = require('../app/models/user');
+const config = require('./auth');
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const LocalStrategy = require('passport-local').Strategy;
  
-var localOptions = {
+const localOptions = {
     usernameField: 'username'
 };
  
-var localLogin = new LocalStrategy(localOptions, function(username, password, done){
+const localLogin = new LocalStrategy(localOptions, function(username, password, done){
  
     User.findOne({
         username: username
@@ -42,12 +42,12 @@ var localLogin = new LocalStrategy(localOptions, function(username, password, do
  
 });
  
-var jwtOptions = {
+const jwtOptions = {
     jwtFromRequest: ExtractJwt.fromAuthHeader(),
     secretOrKey: config.secret
 };
  
-var jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
+const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
  
     User.findById(payload._id, function(err, user){
  

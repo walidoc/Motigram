@@ -1,10 +1,10 @@
-var Image = require('../models/image'),
+const Image = require('../models/image'),
     path = require('path'),
     fs = require('fs'),
     del = require('del');
  
 exports.createImage = function(req, res, next){
-    var newImage = new Image();
+    const newImage = new Image();
     newImage.filename = req.file.filename;
     newImage.originalName = req.file.originalname;
     newImage.desc = req.body.desc;
@@ -26,7 +26,7 @@ exports.getImages = function(req, res, next){
  
         // Manually set the correct URL to each image
         for (let i = 0; i < images.length; i++) {
-            var img = images[i];
+            let img = images[i];
             img.url = req.protocol + '://' + req.get('host') + '/api/images/' + img._id;
         }
         res.json(images);

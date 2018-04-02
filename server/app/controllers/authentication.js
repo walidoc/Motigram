@@ -1,6 +1,6 @@
-var jwt = require('jsonwebtoken'); 
-var User = require('../models/user');
-var authConfig = require('../../config/auth');
+const jwt = require('jsonwebtoken'); 
+const User = require('../models/user');
+const authConfig = require('../../config/auth');
  
 function generateToken(user){
     return jwt.sign(user, authConfig.secret, {
@@ -17,7 +17,7 @@ function setUserInfo(request){
  
 exports.login = function(req, res, next){
  
-    var userInfo = setUserInfo(req.user);
+    const userInfo = setUserInfo(req.user);
  
     res.status(200).json({
         token: 'JWT ' + generateToken(userInfo),
@@ -29,8 +29,8 @@ exports.login = function(req, res, next){
 exports.register = function(req, res, next){
     console.log('req: ', req.body);
     
-    var username = req.body.username;
-    var password = req.body.password;
+    const username = req.body.username;
+    const password = req.body.password;
  
     if(!username){
         return res.status(422).send({error: 'You must enter a username address'});
@@ -50,7 +50,7 @@ exports.register = function(req, res, next){
             return res.status(422).send({error: 'That username address is already in use'});
         }
  
-        var user = new User({
+        const user = new User({
             username: username,
             password: password
         });
@@ -61,7 +61,7 @@ exports.register = function(req, res, next){
                 return next(err);
             }
  
-            var userInfo = setUserInfo(user);
+            const userInfo = setUserInfo(user);
  
             res.status(201).json({
                 token: 'JWT ' + generateToken(userInfo),

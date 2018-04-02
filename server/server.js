@@ -1,12 +1,12 @@
-var express  = require('express');
-var app      = express();
-var mongoose = require('mongoose');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
-var cors = require('cors');
+const express  = require('express');
+const app      = express();
+const mongoose = require('mongoose');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
+const cors = require('cors');
  
-var databaseConfig = require('./config/database');
-var router = require('./app/routes');
+const databaseConfig = require('./config/database');
+const router = require('./app/routes');
 
 mongoose.connect(databaseConfig.uri, (err) => {
     if(err){

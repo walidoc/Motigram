@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
  
-var ImageSchema = new mongoose.Schema({
+const ImageSchema = new mongoose.Schema({
  
     filename: {
         type: String

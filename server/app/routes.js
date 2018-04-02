@@ -1,14 +1,14 @@
-var AuthenticationController = require('./controllers/authentication'), 
+const AuthenticationController = require('./controllers/authentication'), 
     ImageController = require('./controllers/images'), 
     express = require('express'),
     passportService = require('../config/passport'),
     multer = require('multer'),
     passport = require('passport');
 
-var requireAuth = passport.authenticate('jwt', {session: false}),
+const requireAuth = passport.authenticate('jwt', {session: false}),
     requireLogin = passport.authenticate('local', {session: false});
 
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, '../server/uploads')
     },
@@ -16,11 +16,11 @@ var storage = multer.diskStorage({
         cb(null, file.fieldname + '-' + Date.now())
     }
 });       
-var upload = multer({ storage: storage });
+const upload = multer({ storage: storage });
 
 module.exports = function(app){
  
-    var apiRoutes = express.Router(),
+    const apiRoutes = express.Router(),
         authRoutes = express.Router(),
         imageRoutes = express.Router();
  
