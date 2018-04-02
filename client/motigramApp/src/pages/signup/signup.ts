@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
+import { LoginPage } from '../login/login';
  
 @Component({
   selector: 'signup-page',
@@ -32,10 +33,14 @@ export class SignupPage {
       this.navCtrl.setRoot(HomePage);
     }, (err) => {
         this.loading.dismiss();
-    });
+    }); 
  
   }
- 
+  
+  signin() {
+    this.navCtrl.push(LoginPage);
+  }
+
   showLoader(){
  
     this.loading = this.loadingCtrl.create({

@@ -10,6 +10,11 @@
             display: flex;
             flex-direction: column;
         }
+
+        ion-row {
+            align-items: center;
+            text-align: center;
+        }
  
         ion-item {
             border-radius: 30px !important;
@@ -21,7 +26,7 @@
         }
  
         ion-list {
-            margin: 0;
+            margin-top: 30px !important;
         }
  
         .heading-text {
@@ -40,12 +45,19 @@
         }
  
         .continue-button {
-            width: 100%;
+            width: 80%;
             border-radius: 30px;
             margin-top: 30px;
             font-size: 0.9em;
             background-color: transparent;
             border: 1px solid #fff;
+        }
+
+        .signin-button {
+            margin-top: 20px;
+            background-color: transparent;
+            color: #fff;
+            border-radius: 30px;
         }
  
     }
