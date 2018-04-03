@@ -1,6 +1,11 @@
 # Motigram
 
+A photo sharing mobile app, inspired from Instagram. Made with Express Js, Ionic 3 and Mongodb.
+In this app, we focus more on the back-end side and on functionalities like authentication and photo uploading.
+
+
 ## Usage 
+
 1. Make sure your have a mongodb server running
 2. Download the project:
 ```
@@ -19,6 +24,7 @@ cd motigramApp && npm install
 ionic cordova add platform android
 ionic cordova run android 
 ```
+
 ## Authors
 
 * **Walid Rahali** - *Initial work* - [walidoc](https://github.com/walidoc)
